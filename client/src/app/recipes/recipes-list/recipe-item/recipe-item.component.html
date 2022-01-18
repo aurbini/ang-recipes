@@ -1,14 +1,19 @@
-<div class="row border border-light">
-  <div class="col-8">
-    <h2>Spaghetti</h2>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni vo</p>
+<a
+  [routerLink]="['/recipes', id]"
+  style="cursor: pointer;"
+  class="list-group-item clearfix; ">
+  <div class="row">
+    <div class="col-9">
+      <h4 class="list-group-item-heading">{{ recipeProps.name }}</h4>
+      <p class="list-group-item-text">{{ recipeProps.description }}</p>
+    </div>
+    <div class="col-3 overflow-hidden">
+      <img
+      [src]="recipeProps.imagePath"
+      alt="{{ recipeProps.name }}"
+      class="img-responsive"
+      style="max-height: 50px;">
+    </div>
   </div>
-  <div class="col-4">
-    <img
-      style="height: 100px; width: 100px"
-      class="image-responsive"
-      src="https://th.bing.com/th/id/OIP.1fCazfiqHZu3q8g1NgX9fQHaE8?pid=ImgDet&rs=1"
-      alt=""
-    />
-  </div>
-</div>
+</a>
+
