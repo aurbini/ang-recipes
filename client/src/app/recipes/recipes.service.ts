@@ -1,21 +1,27 @@
 import { Injectable } from '@angular/core';
 import { Recipe } from './recipe.model';
-import { BehaviorSubject, filter } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { InMemRecipes } from './inMemoryRecipes';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root',
 })
 export class RecipesService {
-    
-    recipes : BehaviorSubject<Recipe[]> = new BehaviorSubject(InMemRecipes) 
+  // recipes$: BehaviorSubject<Recipe[]> = new BehaviorSubject(InMemRecipes);
+  recipesChanged = new Subject<Recipe[]>();
+  recipes$: BehaviorSubject<Recipe[]> = new BehaviorSubject(InMemRecipes);
 
+  constructor() {
+    // console.log(this.recipes$);
+  }
 
-    constructor(){
-    }
-    
-    getRecipe(id: string){
-        const selectedIndex = this.recipes.getValue().findIndex(recipe => recipe.id === id)
-        return this.recipes.getValue()[selectedIndex]
-    }
+  getRecipe(id: number) {
+    return this.recipes$.getValue()[id];
+  }
+  deleteRecipe(id: number) {
+    const updatedRecipes = [...this.recipes$.getValue()];
+    updatedRecipes.splice(id, 1);
+
+    this.recipes$.next(updatedRecipes);
+  }
 }
