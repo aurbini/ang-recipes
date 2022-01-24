@@ -27,7 +27,9 @@ export class RecipeDetailComponent implements OnInit {
 
   ngOnInit() {}
 
-  onAddToShoppingList() {}
+  onAddToShoppingList() {
+    this.recipesService.onAddToIngredients(this.id);
+  }
   onDeleteRecipe() {
     this.recipesService.deleteRecipe(this.id);
     this.router.navigate(['../'], { relativeTo: this.route });

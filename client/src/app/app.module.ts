@@ -11,12 +11,14 @@ import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.com
 import { RecipeItemComponent } from './recipes/recipes-list/recipe-item/recipe-item.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ShoppingEditComponent,
     RecipesComponent,
     ShoppingListComponent,
     HeaderComponent,
@@ -26,7 +28,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RecipeEditComponent,
     RecipeStartComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, NgbModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    NgbModule,
+    FormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

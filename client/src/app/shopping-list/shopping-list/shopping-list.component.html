@@ -1,1 +1,16 @@
-<p>shopping-list works!</p>
+<app-shopping-edit></app-shopping-edit>
+<div class="row">
+  <div class="col-4 mt-4">
+    <ul class="list-group">
+      <a
+        (click)="onEdit(i)"
+        style="cursor: pointer"
+        *ngFor="let ingredient of shoppingList$ | async; let i = index"
+        class="list-group-item"
+      >
+        <span> {{ ingredient.name }} </span
+        ><span>{{ ingredient.amount }} </span>
+      </a>
+    </ul>
+  </div>
+</div>
