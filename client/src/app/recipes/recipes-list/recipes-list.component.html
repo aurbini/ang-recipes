@@ -8,9 +8,10 @@
 <hr />
 <div class="row">
   <div class="col">
-    <app-recipe-item 
-      [id]="recipe.id"
-    [recipe]="recipe" *ngFor="let recipe of recipes$ | async"></app-recipe-item>
-    
+    <app-recipe-item
+      [id]="i"
+      [recipe]="recipe"
+      *ngFor="let recipe of recipes$ | async; let i = index"
+    ></app-recipe-item>
   </div>
 </div>
