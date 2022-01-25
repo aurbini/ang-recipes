@@ -4,10 +4,12 @@ import { HttpClient } from '@angular/common/http';
 import { map, tap } from 'rxjs/operators';
 import { catchError, retry } from 'rxjs/operators';
 import { Recipe } from '../recipes/recipe.model';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
 export class DataStorageService {
+  url = environment.url;
   constructor(
     private recipeService: RecipesService,
     private httpClient: HttpClient
@@ -16,10 +18,7 @@ export class DataStorageService {
   saveRecipes() {
     const recipes = this.recipeService.recipes$.getValue();
     this.httpClient
-      .put(
-        'https://urbini-quotes-default-rtdb.firebaseio.com/recipes.json',
-        recipes
-      )
+      .put(this.url, recipes)
       .subscribe((data) => console.log(data));
   }
   fetchRecipes() {
