@@ -7,7 +7,7 @@ export const InMemRecipes: Recipe[] = [
     imagePath:
       'https://th.bing.com/th/id/OIP.1fCazfiqHZu3q8g1NgX9fQHaE8?pid=ImgDet&rs=1',
     ingredients: [
-      { name: 'pasta', amount: 4 },
+      { name: 'Lasagna', amount: 4 },
       { name: 'tomato', amount: 4 },
     ],
   },
