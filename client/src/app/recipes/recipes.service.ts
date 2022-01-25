@@ -9,9 +9,9 @@ import { Ingredient } from '../shopping-list/Ingredient.module';
   providedIn: 'root',
 })
 export class RecipesService {
-  // recipes$: BehaviorSubject<Recipe[]> = new BehaviorSubject(InMemRecipes);
-  recipesChanged = new Subject<Recipe[]>();
-  recipes$: BehaviorSubject<Recipe[]> = new BehaviorSubject(InMemRecipes);
+  recipes$: BehaviorSubject<Recipe[]> = new BehaviorSubject<Recipe[]>([]);
+  // recipesChanged : new BehaviorSubject<Recipe[]> = new BehaviorSubject(Recipe[])
+  // recipes$:Recipe[] = [];
 
   constructor(private shoppingListService: ShoppingListService) {
     // console.log(this.recipes$);
@@ -19,6 +19,19 @@ export class RecipesService {
 
   getRecipe(id: number) {
     return this.recipes$.getValue()[id];
+  }
+  setRecipes(recipes: Recipe[]) {
+    return this.recipes$.next(recipes);
+  }
+  addRecipe(recipe: Recipe) {
+    const updatedRecipes = [...this.recipes$.getValue()];
+    updatedRecipes.push(recipe);
+    this.recipes$.next(updatedRecipes);
+  }
+  updateRecipe(index: number, updatedRecipe: Recipe) {
+    const updatedRecipes = [...this.recipes$.getValue()];
+    updatedRecipes[index] = updatedRecipe;
+    this.recipes$.next(updatedRecipes);
   }
   deleteRecipe(id: number) {
     const updatedRecipes = [...this.recipes$.getValue()];
