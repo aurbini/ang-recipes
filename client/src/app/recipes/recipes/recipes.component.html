@@ -1,5 +1,72 @@
 <div class="row">
   <div class="col-md-5">
+    <modal-scroll #modal>
+      <!--  body of the modal  -->
+      <form #f="ngForm">
+        <div class="form-group" style="max-height: 300px" class="overflow-auto">
+          <p><u>Educational Freedom and Independence</u></p>
+          <ul>
+            <li>
+              I support educational freedom and independence for parents by
+              having their education funds follow students based on their
+              parents’ choice of schooling.
+            </li>
+            <li>
+              I support a full audit (academic, financial, and personnel) of the
+              education system and schools to provide parents and the public
+              with full transparency.
+            </li>
+            <li>
+              I will not assist candidates who seek or accept support from any
+              teachers union or affiliated groups.
+            </li>
+          </ul>
+          <p>Universal Term Limits</p>
+          <ul>
+            <li>I support universal term limits for elected offices.</li>
+          </ul>
+          <p>Safe streets and schools</p>
+          <ul>
+            <li>
+              I support our local law enforcement and oppose any efforts to
+              defund police and public safety, knowing safe streets and safe
+              schools are paramount to quality education.
+            </li>
+          </ul>
+          <br />
+          <div class="input-group">
+            <div class="row">
+              <div class="col-3">
+                <input
+                  (change)="onToggleIsPledgeApproved()"
+                  type="checkbox"
+                  name="checkbox"
+                  value="check"
+                  id="agree"
+                />
+              </div>
+            </div>
+            <div class="col-9">
+              <span>
+                I have read and agree to the Terms and Conditions and Privacy
+                Policy
+              </span>
+            </div>
+          </div>
+        </div>
+      </form>
+    </modal-scroll>
+    <div>
+      <button
+        type="button"
+        id="button"
+        class="btn btn-outline-dark"
+        style="margin: auto"
+        (click)="openModal()"
+      >
+        Click me
+      </button>
+    </div>
     <app-recipes-list></app-recipes-list>
   </div>
   <div class="col-md-7">

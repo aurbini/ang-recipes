@@ -21,7 +21,7 @@ export class RecipesService {
     return this.recipes$.getValue()[id];
   }
   setRecipes(recipes: Recipe[]) {
-    return this.recipes$.next(recipes);
+    this.recipes$.next(recipes);
   }
   addRecipe(recipe: Recipe) {
     const updatedRecipes = [...this.recipes$.getValue()];
