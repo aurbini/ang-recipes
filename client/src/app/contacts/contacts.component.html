@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="title">Custom Autocomplete Dropdown Menu</div>
+  <div class="auto-complete">
+    <!-- Search Input -->
+    <input
+      class="input-search"
+      type="text"
+      placeholder="Search for contacts"
+      (input)="onSearchContact($event)"
+      (click)="onOpenDrop(true)"
+      (clickOutside)="onOpenDrop(false)"
+      [exclude]="'.input-search'"
+    />
+
+    <!-- Dropdown Menu -->
+    <div *ngIf="openDrop" class="drop-down">
+      <table>
+        <tr
+          class="item"
+          *ngFor="let contact of filterContacts"
+          (click)="onSelectItem(contact)"
+        >
+          <td>
+            <div class="avatar">
+              <img [src]="contact.avatar" alt="avatar" width="40" height="40" />
+            </div>
+          </td>
+          <td>{{ contact.name }}</td>
+          <td>{{ contact.email }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- pre -->
+  <pre class="pre" [innerHTML]="selectedItem | json"></pre>
+</div>

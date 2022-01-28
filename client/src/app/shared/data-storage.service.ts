@@ -10,6 +10,10 @@ import { environment } from 'src/environments/environment';
 })
 export class DataStorageService {
   url = environment.url;
+  //example connection string
+  //Feel free to change it to your needs
+  // url = 'localhost/api/recipes';
+
   constructor(
     private recipeService: RecipesService,
     private httpClient: HttpClient
@@ -22,22 +26,18 @@ export class DataStorageService {
       .subscribe((data) => console.log(data));
   }
   fetchRecipes() {
-    return this.httpClient
-      .get<Recipe[]>(
-        'https://urbini-quotes-default-rtdb.firebaseio.com/recipes.json'
-      )
-      .pipe(
-        map((recipes) => {
-          return recipes.map((recipe) => {
-            return {
-              ...recipe,
-              ingredient: recipe.ingredients ? recipe.ingredients : [],
-            };
-          });
-        }),
-        tap((recipes) => {
-          this.recipeService.setRecipes(recipes);
-        })
-      );
+    return this.httpClient.get<Recipe[]>(this.url).pipe(
+      map((recipes) => {
+        return recipes.map((recipe) => {
+          return {
+            ...recipe,
+            ingredient: recipe.ingredients ? recipe.ingredients : [],
+          };
+        });
+      }),
+      tap((recipes) => {
+        this.recipeService.setRecipes(recipes);
+      })
+    );
   }
 }

@@ -15,6 +15,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthComponent } from './auth/auth.component';
+import { ModalComponent } from './shared/modal/modal.component';
+import { ContactsComponent } from './contacts/contacts.component';
+import { ClickOutsideModule } from 'ng-click-outside';
+import { ModalScrollComponent } from './shared/modalScroll/modalScroll.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +33,10 @@ import { HttpClientModule } from '@angular/common/http';
     RecipeItemComponent,
     RecipeEditComponent,
     RecipeStartComponent,
+    AuthComponent,
+    ModalComponent,
+    ContactsComponent,
+    ModalScrollComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +45,7 @@ import { HttpClientModule } from '@angular/common/http';
     NgbModule,
     FormsModule,
     HttpClientModule,
+    ClickOutsideModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
